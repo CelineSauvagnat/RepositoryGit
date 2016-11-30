@@ -1,0 +1,31 @@
+# -*-coding:UTF-8 -*
+import os
+
+from random import randrange
+from math import ceil
+somme=100
+jouer=True
+print("Bienvenue au Casino. Vous avez", somme,"$.")
+while jouer:
+    pari=input("Sur quel nombre souhaitez-vous miser ?")
+    pari=int(pari)
+    valeur=input("Combien souhaitez-vous miser ?")
+    valeur=int(valeur)
+    bille=randrange(50)
+    print("La bille tombe sur le",bille)
+    if pari==bille:
+        somme=somme+valeur*3
+        print("Bravo, votre somme est multipliée par 3 !")
+    elif (pari%2==0 and bille%2==0) or (pari%2!=0 and bille%2!=0):
+        somme=somme+valeur*1.5
+        somme=ceil(somme)
+        print("Bravo, votre somme est multipliée par 1.5 !")
+    else:
+        somme=somme-valeur
+        print("Zut, vous perdez votre mise !")
+    print("Vous avez maintenant",somme,"$")
+    x=input("Tapez o pour continuer, n pour quitter le jeu.")
+    if x=="n":
+        jouer=False
+
+os.system("pause")
